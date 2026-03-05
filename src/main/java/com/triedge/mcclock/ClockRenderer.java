@@ -1,4 +1,4 @@
-package com.example.mcclock;
+package com.triedge.mcclock;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;

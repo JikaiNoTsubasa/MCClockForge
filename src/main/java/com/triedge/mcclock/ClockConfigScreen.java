@@ -1,4 +1,4 @@
-package com.example.mcclock;
+package com.triedge.mcclock;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;

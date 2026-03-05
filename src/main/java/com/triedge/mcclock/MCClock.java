@@ -1,4 +1,4 @@
-package com.example.mcclock;
+package com.triedge.mcclock;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.ConfigScreenHandler;
