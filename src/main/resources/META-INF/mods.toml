@@ -1,7 +1,7 @@
 modLoader="javafml"
 loaderVersion="[47,)"
 license="All Rights Reserved"
-issueTrackerURL="https://github.com/example/mcclock/issues"
+issueTrackerURL="https://github.com/JikaiNoTsubasa/MCClockForge/issues"
 
 [[mods]]
 modId="mcclock"
@@ -12,8 +12,8 @@ A client-side mod that displays an in-game time clock with sun and moon indicato
 '''
 logoFile="icon.png"
 credits="Created for Minecraft 1.20.1"
-authors="Example Author"
-displayURL="https://github.com/example/mcclock"
+authors="Jikai"
+displayURL="https://github.com/JikaiNoTsubasa/MCClockForge"
 
 [[dependencies.mcclock]]
 modId="forge"

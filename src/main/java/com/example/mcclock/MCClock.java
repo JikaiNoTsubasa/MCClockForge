@@ -1,6 +1,7 @@
 package com.example.mcclock;
 
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,6 +23,8 @@ public class MCClock {
         modEventBus.register(this);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ClockConfig.SPEC);
+        ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class,
+                () -> new ConfigScreenHandler.ConfigScreenFactory((minecraft, screen) -> new ClockConfigScreen(screen)));
 
         MinecraftForge.EVENT_BUS.register(this);
     }

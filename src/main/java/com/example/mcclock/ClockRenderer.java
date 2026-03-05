@@ -28,9 +28,17 @@ public class ClockRenderer implements IGuiOverlay {
         Level level = mc.level;
         long dayTime = level.getDayTime() % 24000;
 
-        float timeProgress = dayTime / 24000.0f;
+        boolean isNight = dayTime >= 12000;
+        float timeProgress;
+        ResourceLocation icon;
 
-        boolean isNight = dayTime >= 13000 && dayTime < 23000;
+        if (isNight) {
+            timeProgress = (dayTime - 12000) / 12000.0f;
+            icon = CLOCK_MOON;
+        } else {
+            timeProgress = dayTime / 12000.0f;
+            icon = CLOCK_SUN;
+        }
 
         int[] pos = calculatePosition(screenWidth, screenHeight);
         int x = pos[0];
@@ -43,8 +51,6 @@ public class ClockRenderer implements IGuiOverlay {
 
         int iconX = x + (int)((BACKGROUND_WIDTH - ICON_SIZE) * timeProgress);
         int iconY = y - 1;
-
-        ResourceLocation icon = isNight ? CLOCK_MOON : CLOCK_SUN;
         guiGraphics.blit(icon, iconX, iconY, 0, 0, ICON_SIZE, ICON_SIZE, ICON_SIZE, ICON_SIZE);
 
         RenderSystem.disableBlend();
