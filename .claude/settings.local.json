@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(python generate_textures.py:*)",
+      "Bash(pip install:*)",
+      "Bash(del:*)"
+    ]
+  }
+}

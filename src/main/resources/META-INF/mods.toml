@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/example/mcclock/issues"
+
+[[mods]]
+modId="mcclock"
+version="${file.jarVersion}"
+displayName="MC Clock"
+description='''
+A client-side mod that displays an in-game time clock with sun and moon indicators.
+'''
+logoFile="icon.png"
+credits="Created for Minecraft 1.20.1"
+authors="Example Author"
+displayURL="https://github.com/example/mcclock"
+
+[[dependencies.mcclock]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.mcclock]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="CLIENT"
