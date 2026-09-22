@@ -13,6 +13,9 @@ public class ClockConfigScreen extends Screen {
     private CycleButton<ClockConfig.ClockPosition> positionButton;
     private IntSlider xOffsetSlider;
     private IntSlider yOffsetSlider;
+    private CycleButton<Boolean> showTimeButton;
+    private CycleButton<Boolean> formatButton;
+    private CycleButton<Boolean> customFontButton;
 
     public ClockConfigScreen(Screen lastScreen) {
         super(Component.literal("Clock Configuration"));
@@ -40,13 +43,46 @@ public class ClockConfigScreen extends Screen {
                 Component.literal("Y Offset: "), Component.empty(),
                 -1000, 1000, ClockConfig.Y_OFFSET.get(), ClockConfig.Y_OFFSET);
 
+        this.showTimeButton = CycleButton.<Boolean>builder(show ->
+                Component.literal("Show Time: " + (show ? "ON" : "OFF")))
+                .withValues(false, true)
+                .withInitialValue(ClockConfig.SHOW_TIME.get())
+                .create(centerX - 100, startY + 90, 200, 20, Component.literal("Show Time"),
+                        (button, value) -> {
+                            ClockConfig.SHOW_TIME.set(value);
+                            ClockConfig.SPEC.save();
+                        });
+
+        this.formatButton = CycleButton.<Boolean>builder(format ->
+                Component.literal("Format: " + (format ? "24H" : "12H")))
+                .withValues(false, true)
+                .withInitialValue(ClockConfig.IS_24_HOUR_FORMAT.get())
+                .create(centerX - 100, startY + 120, 200, 20, Component.literal("Time Format"),
+                        (button, value) -> {
+                            ClockConfig.IS_24_HOUR_FORMAT.set(value);
+                            ClockConfig.SPEC.save();
+                        });
+
+        this.customFontButton = CycleButton.<Boolean>builder(custom ->
+                Component.literal("Custom Font: " + (custom ? "ON" : "OFF")))
+                .withValues(false, true)
+                .withInitialValue(ClockConfig.USE_CUSTOM_FONT.get())
+                .create(centerX - 100, startY + 150, 200, 20, Component.literal("Custom Font"),
+                        (button, value) -> {
+                            ClockConfig.USE_CUSTOM_FONT.set(value);
+                            ClockConfig.SPEC.save();
+                        });
+
         this.addRenderableWidget(positionButton);
         this.addRenderableWidget(xOffsetSlider);
         this.addRenderableWidget(yOffsetSlider);
+        this.addRenderableWidget(showTimeButton);
+        this.addRenderableWidget(formatButton);
+        this.addRenderableWidget(customFontButton);
 
         this.addRenderableWidget(Button.builder(Component.literal("Done"), button -> {
             this.minecraft.setScreen(lastScreen);
-        }).bounds(centerX - 100, this.height - 40, 200, 20).build());
+        }).bounds(centerX - 100, this.height - 30, 200, 20).build());
     }
 
     @Override
